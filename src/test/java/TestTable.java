@@ -41,12 +41,17 @@ public class TestTable {
         WebElement row3 = wd.findElement(By.cssSelector("#customers tr:nth-child(3)"));
         System.out.println(row3.getText());
 
-        WebElement lastCol = wd.findElement(By.cssSelector("#customers tr:last-child td:last-child"));
-        System.out.println(lastCol.getText());
+        List<WebElement> lastCol = wd.findElements(By.cssSelector("#customers td:last-child"));
+        for(WebElement e:lastCol){
+            System.out.println(e.getText());
+        }
 
-//        List<WebElement> rowName = wd.findElements(By.cssSelector("#customers tr:nth-child(7) td"));
-//        System.out.println(rowName);
-        // print number of row with name "Philip Cramer"
+        List<WebElement> rowName = wd.findElements(By.cssSelector("#customers tr"));
+       for(int i = 0;i < rowName.size();i++) {
+           if (rowName.get(i).getText().contains("Philip Cramer")) {
+               System.out.println(i + 1);
+           }
+       }
     }
 
 
